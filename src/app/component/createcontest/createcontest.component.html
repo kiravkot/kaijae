@@ -1,0 +1,47 @@
+<form #addcontest="ngForm" (ngSubmit)="onSubmit(addcontest)" novalidate>
+  <div>
+    <label>ชื่อการประกวดแข่งขัน</label>
+    <div class="form-group">
+      <input
+        type="text"
+        name="contestname"
+        class="form-control"
+        placeholder="ชื่อการแข่งขัน"
+        ngModel
+      />
+    </div>
+    <label>รายละเอียดการประกวด</label>
+    <div class="form-group">
+      <!-- <textarea rows="15" cols="80" name="description" class="form-control" ngModel> -->
+      <input
+        type="text"
+        name="description"
+        class="form-control"
+        placeholder="รายละเอียดการประกวด"
+        ngModel
+      />
+    </div>
+    <label for="playtime">เวลาที่ใช่ในการแข่งขัน</label>
+    <div class="form-group">
+      <input
+        type="text"
+        name="location"
+        class="form-control"
+        placeholder="สถานที่จัดแข่งขัน"
+        ngModel
+      />
+    </div>
+    <label for="playtime">วันที่จัดงาน</label>
+    <div class="form-group">
+      <input type="date" name="date" class="form-control" ngModel />
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" id="playerqu">
+    เพิ่มข้อมูล
+  </button>
+</form>
+<!-- <pre>
+    {{ addcontest.value | json }}
+  </pre -->
+>

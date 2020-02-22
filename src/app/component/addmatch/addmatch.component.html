@@ -1,0 +1,116 @@
+<h2>กรอกข้อมูลการแข่งขัน</h2>
+<!-- <div class="container">
+    <div class="form-group">
+        <label for ="num">จำนวนผู้เข้าแข่ง</label>
+        <select name="num" ngModel #num="ngModel">
+          <option *ngFor="let nums of numOpt" [value]="nums">{{ nums }}</option>
+        </select>
+        <button class="btn btn-primary" type="submit" (click)="tableCreate(num.value)">Submit</button>
+    </div>
+</div> -->
+<!-- <form [formGroup]="form" (ngSubmit)="submit()">
+<fieldset>
+  <legend>ผู้เข้าแข่ง | <span class="glyphicon glyphicon-plus" (click)="addNext()"></span></legend>
+</fieldset>
+<div formArrayName="items" class="input-group" *ngFor="let item of form.controls['items'].controls; let i = index">
+    <div [formGroupName]="i">
+        <input type="text" class="form-control" [formControlName]="MemID" placeholder="Member ID" >
+        <input [formControlName]='score' value="0" hidden="true">
+      </div>
+</div>
+<button type="submit" class="btn btn-primary">Submit (look at console)</button>
+</form> -->
+<div>
+  <form #contestpath="ngForm">
+    <div class="form-group">
+      <label for="contestid">เลือกการประกวดแข่งขัน</label>
+      <select
+        required
+        name="contestid"
+        class="form-control"
+        ngModel
+        #contestid="ngModel"
+      >
+        <option
+          value="{{ item.path }}"
+          *ngFor="let item of contest; let count = index"
+          >{{ item.contestname + item.location + item.date }}
+        </option>
+      </select>
+    </div>
+    <!-- <button (click)="getpathref()">test</button> -->
+  </form>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="submit(contestpath)" novalidate>
+  <div>
+    <!-- <input type="text" class="form-control" formControlName="MatchID" /> -->
+    <label>ชื่อการแข่งขัน</label>
+    <div>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="name"
+        placeholder="ชื่อการแข่งขัน"
+      />
+    </div>
+    <label>ประเภท</label>
+    <div>
+      <select class="form-control" formControlName="type">
+        <option value="Cheer">เชียร์ได้</option>
+        <option value="NoCheer">ห้ามเชียร์</option>
+      </select>
+    </div>
+    <label for="playtime">เวลาที่ใช่ในการแข่งขัน</label>
+    <div>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="time"
+        placeholder="เวลากี่นาที"
+      />
+    </div>
+  </div>
+  <div>
+    <!-- <button
+      type="button"
+      class="btn btn-primary"
+      elementid="create"
+      (click)="addmatch()"
+    >
+      สร้าง การแข่งขัน
+    </button> -->
+  </div>
+
+  <button type="submit" class="btn btn-primary" id="playerqu">
+    เพิ่มข้อมูล
+  </button>
+</form>
+<!-- <pre>
+  {{ form.value | json }}
+  {{ contestpath.value | json }}
+</pre> -->
+
+<!-- <div name="addplayer">
+    <fieldset>
+      <legend>
+        ผู้เข้าแข่ง |
+        <span class="glyphicon glyphicon-plus" (click)="addNext()"></span>
+      </legend>
+      <div
+        formGroupName="player"
+        *ngFor="let item of form.get('player')['controls']; let i = index"
+      >
+        <div class="input-group" [formGroupName]="i">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="playername"
+            placeholder="Member ID"
+          /><span class="input-group-addon glyphicon glyphicon-trash"></span>
+          <input formControlName="score" hidden="true" />
+        </div>
+      </div>
+    </fieldset>
+  </div> -->
+<!-- </div> -->

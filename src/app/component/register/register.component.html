@@ -1,0 +1,176 @@
+<div class="container">
+  <h2>Register</h2>
+  <div class="row">
+    <div class="card" style="width: 75rem;">
+      <form #regisform="ngForm" (ngSubmit)="doRegister(regisform)">
+        <img [src]="imgSrc" height="250" width="350" />
+        <div class="form-group">
+          <input
+            type="file"
+            name="imgprofileRef"
+            accept="image/*"
+            (change)="showpreview($event)"
+            class="form-control"
+            ngModel
+            #imgprofile="ngModel"
+          />
+        </div>
+        <div class="form-group">
+          <label for="fname">First Name</label>
+          <input
+            required
+            type="text"
+            name="fname"
+            class="form-control"
+            placeholder="First Name"
+            ngModel
+            #fname="ngModel"
+          />
+          <div
+            *ngIf="fname.touched && fname.invalid"
+            class="alert alert-danger"
+          >
+            <p>
+              กรุณากรอกชื่อ
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="lname">Last Name</label>
+          <input
+            required
+            type="text"
+            name="lname"
+            class="form-control"
+            placeholder="Last Name"
+            ngModel
+            #lname="ngModel"
+          />
+          <div
+            *ngIf="lname.touched && lname.invalid"
+            class="alert alert-danger"
+          >
+            <p>
+              กรุณากรอกนามสกุล
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            required
+            type="email"
+            name="email"
+            class="form-control"
+            placeholder="Email Address"
+            ngModel
+            #email="ngModel"
+          />
+          <div
+            *ngIf="email.touched && email.invalid"
+            class="alert alert-danger"
+          >
+            <p>
+              กรุณากรอกEmail
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">รหัสผ่าน</label>
+
+          <!-- <input  class="form-control" type="password" id="password" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required> -->
+          <input
+            required
+            minlength="8"
+            maxlength="24"
+            name="password"
+            type="password"
+            class="form-control"
+            placeholder="Password"
+            ngModel
+            #password="ngModel"
+          />
+          <div
+            *ngIf="password.touched && password.invalid"
+            class="alert alert-danger"
+          >
+            <p>กรุณากรอก รหัสผ่าน</p>
+            <p>ใส่รหัสผ่านไม่เกิน 24 ตัว</p>
+            <P>ใส่รหัสผ่านอย่างน้อย 8 ตัว</P>
+          </div>
+          <!-- <div id="message">
+            <h3>Password must contain the following:</h3>
+            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+            <p id="number" class="invalid">A <b>number</b></p>
+            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+        </div> -->
+        </div>
+        <div class="form-group">
+          <label for="Confirm-Password">ยืนยันรหัสผ่าน</label>
+          <input
+            required
+            minlength="8"
+            maxlength="24"
+            name="ConfirmPassword"
+            type="password"
+            class="form-control"
+            placeholder="Confirm Password"
+            ngModel
+            #ConfirmPassword="ngModel"
+          />
+          <div
+            *ngIf="ConfirmPassword.touched && ConfirmPassword.invalid"
+            class="alert alert-danger"
+          >
+            <p>กรุณากรอก รหัสผ่าน</p>
+            <p *ngIf="password.value != ConfirmPassword.value">
+              รหัสผ่านไม่ตรงกัน
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="tel">เบอร์โทร</label>
+          <input
+            type="text"
+            name="tel"
+            class="form-control"
+            minlength="10"
+            maxlength="10"
+            ngModel
+          />
+        </div>
+        <div class="form-group">
+          <label for="address">ที่อยู่</label>
+          <input type="text" name="address" class="form-control" ngModel />
+        </div>
+        <div class="form-group">
+          <label for="Province">จังหวัด</label>
+          <input type="text" name="Province" class="form-control" ngModel />
+        </div>
+        <div class="radio">
+          <label for="gender" *ngFor="let sex of sexs">
+            <input [value]="sex" type="radio" name="gender" ngModel />{{ sex
+            }}<br />
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="birth">วันเกิด</label>
+          <input type="date" name="birth" class="form-control" ngModel />
+        </div>
+        <div class="form-group" hidden="true">
+          <input type="text" name="permission" class="form-control" ngModel />
+        </div>
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="regisform.invalid"
+        >
+          Submit</button
+        >&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-danger" type="reset">reset</button>
+      </form>
+    </div>
+  </div>
+</div>

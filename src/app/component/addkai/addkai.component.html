@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="card" style="width: 25rem;margin-left: 30px;">
+    <form #kaijae="ngForm" (ngSubmit)="doRegister(kaijae)" novalidate>
+      <img [src]="imgSrc" height="250" width="350" />
+      <div class="form-group">
+        <label for="imgkaiRef">เลือกรูปภาพ</label>
+        <input
+          type="file"
+          name="imgkaiRef"
+          accept="image/*"
+          (change)="showpreview($event)"
+          class="form-control"
+          ngModel
+          #imgkaiRef="ngModel"
+        />
+      </div>
+      <div class="form-group">
+        <label for="kainame">ชื่อไก่</label
+        ><input
+          type="text"
+          name="kainame"
+          id=""
+          class="form-control"
+          ngModel
+          #kainame="ngModel"
+        />
+      </div>
+      <button type="submit">Upload</button>
+    </form>
+  </div>
+</div>
+
+<!-- <pre>
+    {{ kaijae.value | json }}
+</pre> -->

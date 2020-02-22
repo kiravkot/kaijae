@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row" align="center">
+    <h2 id="matchname"></h2>
+    <table id="customers">
+      <tr>
+        <th id="number" class="col-md-1">อันดับที่</th>
+        <th id="pid" class="col-md-1">หมายเลข</th>
+        <th id="pid" class="col-md-1"></th>
+        <th id="kai" class="col-md-2">ไก่ที่ลง</th>
+        <th id="pname" class="col-md-2">เจ้าของ</th>
+        <th id="pscore" class="col-md-1">คะแนน</th>
+      </tr>
+      <tr *ngFor="let item of playerList; let count = index">
+        <td>{{ count + 1 }}</td>
+        <td>{{ item.number }}</td>
+        <td>
+          <img
+            src="{{ item.imgkaiRef }}"
+            alt=""
+            style="width: 50px;height: 50px;"
+            class="img-circle"
+          />
+        </td>
+        <td>{{ item.kainame }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.score }}</td>
+      </tr>
+      <!-- <tr>
+          <td>{{memsID2}}</td>
+          <td>{{point2}}</td>
+        </tr>
+        <tr>
+          <td>{{memsID3}}</td>
+          <td>{{point3}}</td>
+        </tr>
+        <tr>
+          <td>{{memsID4}}</td>
+          <td>{{point4}}</td>
+        </tr> -->
+    </table>
+
+    <!--<div class="col-md-3" align="center" >
+        <label for="score1" id="score1">{{point1}}</label><P></P>
+        <button class="btn btn-success" type="button">1</button>
+    </div>
+    <div class="col-md-3" align="center">
+        <label for="score2" id="score2">{{point2}}</label><P></P>
+        <button class="btn btn-success" type="button" >2</button>
+    </div>
+    <div class="col-md-3" align="center">
+        <label for="score3" id="score3">{{point3}}</label><P></P>
+        <button class="btn btn-success" type="button" >3</button>
+    </div>
+    <div class="col-md-3" align="center">
+        <label for="score4" id="score4">{{point4}}</label><P></P>
+        <button class="btn btn-success" type="button">4</button>
+    </div>>-->
+  </div>
+</div>

@@ -1,0 +1,172 @@
+<div class="container">
+  <div id="SSS">
+    <form
+      #Addform="ngForm"
+      (ngSubmit)="showtable(Addform)"
+      [hidden]="submitted"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="contestid">เลือกการประกวดแข่งขัน</label>
+        <select
+          required
+          name="contestid"
+          class="form-control"
+          ngModel
+          #contestid="ngModel"
+        >
+          <option
+            value="{{ item.path }}"
+            *ngFor="let item of contest; let count = index"
+            (click)="test(item.path)"
+            >{{ item.contestname + item.location + item.date }}
+          </option>
+        </select>
+        <div
+          *ngIf="contestid.touched && contestid.invalid"
+          class="alert alert-danger"
+        >
+          <p>
+            กรุณา เลือกการประกวดแข่งขัน
+          </p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="matchid">เลือกการแข่งขัน</label>
+        <select
+          required
+          name="matchid"
+          class="form-control"
+          ngModel
+          #matchid="ngModel"
+          (click)="qureymatch(Addform)"
+        >
+          <option
+            value="{{ item.id }}"
+            *ngFor="let item of matchList; let count = index"
+            >{{
+              item.name + "  " + changeoption() + " " + item.time
+            }}
+            นาที</option
+          >
+        </select>
+        <div
+          *ngIf="matchid.touched && matchid.invalid"
+          class="alert alert-danger"
+        >
+          <p>
+            กรุณา เลือกประเภทแข่งขัน
+          </p>
+        </div>
+      </div>
+
+      <!-- <div class="form-group">
+        <input
+          type="text"
+          name="match"
+          class="form-Control"
+          ngModel
+          #match="ngModel"
+        />
+      </div> -->
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<table id="customers">
+  <tr>
+    <th id="number" class="col-md-1">อันดับที่</th>
+    <th id="pid" class="col-md-1">หมายเลข</th>
+    <th id="pid" class="col-md-1"></th>
+    <th id="kai" class="col-md-2">ไก่ที่ลง</th>
+    <th id="pname" class="col-md-2">เจ้าของ</th>
+    <th id="pscore" class="col-md-1">คะแนน</th>
+    <th id="adscore" class="col-md-1">ให้คะแนน</th>
+  </tr>
+  <tr *ngFor="let item of playerList; let count = index">
+    <td>{{ count + 1 }}</td>
+    <td>{{ item.number }}</td>
+    <td>
+      <img
+        src="{{ item.imgkaiRef }}"
+        alt=""
+        style="width: 50px;height: 50px;"
+        class="img-circle"
+      />
+    </td>
+    <td>{{ item.kainame }}</td>
+    <td>{{ item.name }}</td>
+    <td>{{ item.score }}</td>
+    <td>
+      <button
+        id="{{ count }}"
+        class="btn btn-success"
+        type="button"
+        (click)="setscore(count, item.score)"
+      >
+        +1แต้ม
+      </button>
+    </td>
+  </tr>
+</table>
+
+<!-- <table id="customers">
+    <tr>
+      <th>ผู้เข้าแข่ง</th>
+      <th>คะแนน</th>
+    </tr>
+    <tr>
+      <td>{{ memsID1 }}</td>
+      <td>{{ point1 }}</td>
+      <td>
+        <button
+          class="btn btn-success"
+          type="button"
+          (click)="setscore1(match1)"
+        >
+          +1แต้ม
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>{{ memsID2 }}</td>
+      <td>{{ point2 }}</td>
+      <td>
+        <button
+          class="btn btn-success"
+          type="button"
+          (click)="setscore2(match1)"
+        >
+          +1แต้ม
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>{{ memsID3 }}</td>
+      <td>{{ point3 }}</td>
+      <td>
+        <button
+          class="btn btn-success"
+          type="button"
+          (click)="setscore3(match1)"
+        >
+          +1แต้ม
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>{{ memsID4 }}</td>
+      <td>{{ point4 }}</td>
+      <td>
+        <button
+          class="btn btn-success"
+          type="button"
+          (click)="setscore4(match1)"
+        >
+          +1แต้ม
+        </button>
+      </td>
+    </tr>
+  </table> -->
+<!-- </table> -->

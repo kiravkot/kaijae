@@ -1,0 +1,90 @@
+<h1 style="text-align: center;">
+  จำนวนผู้เข้าแข่งขันที่ยังไม่มีกรรมการตัดสิน
+</h1>
+<h3 id="playercount" style="text-align: center;"></h3>
+<div>
+  <div class="col-md-3"></div>
+  <div class="col-md-6"></div>
+  <div class="col-md-3"></div>
+</div>
+<div
+  class="row"
+  style="padding-left: 5vh;padding-right: 5vh; padding-top: 10vh;"
+>
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <form
+      #addjudge="ngForm"
+      (ngSubmit)="getplayer(addjudge)"
+      [hidden]="submitted"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="contestid">เลือกการประกวดแข่งขัน</label>
+        <select
+          required
+          name="contestid"
+          class="form-control"
+          ngModel
+          #contestid="ngModel"
+          (click)="qureymatch(addjudge)"
+        >
+          <option
+            value="{{ item.path }}"
+            *ngFor="let item of contest; let count = index"
+            >{{ item.contestname + item.location + item.date }}
+          </option>
+        </select>
+        <div
+          *ngIf="contestid.touched && contestid.invalid"
+          class="alert alert-danger"
+        >
+          <p>
+            กรุณา เลือกการประกวดแข่งขัน
+          </p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="matchid">เลือกการแข่งขัน</label>
+        <select
+          required
+          name="matchid"
+          class="form-control"
+          ngModel
+          #matchid="ngModel"
+          (click)="getmatchid(addjudge)"
+        >
+          <option
+            value="{{ item.id }}"
+            *ngFor="let item of matchList; let count = index"
+            >{{
+              item.name + "  " + changeoption() + " " + item.time
+            }}
+            นาที</option
+          >
+        </select>
+        <div
+          *ngIf="matchid.touched && matchid.invalid"
+          class="alert alert-danger"
+        >
+          <p>
+            กรุณา เลือกประเภทแข่งขัน
+          </p>
+        </div>
+      </div>
+      <div class="col-md-5"></div>
+      <div class="col-md-2" style="align-items: center;">
+        <button
+          type="submit"
+          class="btn btn-lg btn-info"
+          style="text-align: center;"
+        >
+          ยืนยัน
+        </button>
+      </div>
+
+      <div class="col-md-5"></div>
+    </form>
+  </div>
+  <div class="col-md-3"></div>
+</div>

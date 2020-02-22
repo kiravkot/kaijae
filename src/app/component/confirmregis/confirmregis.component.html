@@ -1,0 +1,76 @@
+<div class="container">
+  <div id="SSS">
+    <form #Addform="ngForm" (ngSubmit)="getplayer(Addform)" novalidate>
+      <div class="form-group">
+        <label for="contestid">เลือกการประกวดแข่งขัน</label>
+        <select
+          required
+          name="contestid"
+          class="form-control"
+          ngModel
+          #contestid="ngModel"
+        >
+          <option
+            value="{{ item2.path }}"
+            *ngFor="let item2 of contest; let count = index"
+            (click)="test(item2.path)"
+            >{{ item2.contestname + item2.location + item2.date }}
+          </option>
+        </select>
+        <div
+          *ngIf="contestid.touched && contestid.invalid"
+          class="alert alert-danger"
+        >
+          <p>
+            กรุณา เลือกการประกวดแข่งขัน
+          </p>
+        </div>
+      </div>
+
+      <label>หมายเลขการแข่ง</label><br />
+      <div class="form-group">
+        <input
+          type="text"
+          name="username"
+          class="form-Control"
+          ngModel
+          #match="ngModel"
+        />
+      </div>
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+<pre>
+    {{ Addform.value | json }}
+  </pre
+>
+<table id="customers">
+  <tr>
+    <th id="number">ลำดับที่</th>
+    <th id="pname">หมายเลข</th>
+    <th id="pname">ประเภท</th>
+    <th id="pscore">ชื่อผู้เข้าแข่ง</th>
+    <th id="adscore">ยืนยันสถานะ</th>
+  </tr>
+  <tr *ngFor="let item of playerlist; let count = index">
+    <td>{{ count + 1 }}</td>
+    <td>{{ item.number }}</td>
+    <td>
+      {{
+        item.data.name + " " + item.data.type + " " + item.data.time + "  นาที"
+      }}
+    </td>
+    <td>{{ item.name }}</td>
+    <td>
+      <button
+        id="{{ count }}"
+        class="btn btn-success"
+        type="button"
+        (click)="comfirm(item.refpath)"
+      >
+        ยืนยัน
+      </button>
+    </td>
+  </tr>
+</table>

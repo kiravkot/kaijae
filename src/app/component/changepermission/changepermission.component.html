@@ -1,0 +1,13 @@
+<h2>ให้สิทธิ์กรรมการ</h2>
+<div>
+  <form #permission="ngForm" (ngSubmit)="onSubmit(permission)" novalidate>
+    <label for="email">ใส่ Email ที่ต้องการเปลี่ยนสิทธิ์</label>
+    <div class="form-group">
+      <input type="email" name="email" id="" class="form-control" ngModel />
+    </div>
+    <button type="submit" class="btn btn-info btn-lg">ยืนยัน</button>
+  </form>
+</div>
+<pre>
+    {{ permission.value | json }}
+</pre>

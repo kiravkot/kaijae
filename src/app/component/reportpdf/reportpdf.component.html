@@ -1,0 +1,84 @@
+  <div class="col-md-12">
+    <div class="col-md-2">
+      <div
+        class="btn-group-vertical"
+        role="group"
+        aria-label="..."
+        style="width: 100%;"
+      >
+        <div class="list-group">
+          <div><button
+            type="button"
+            class="list-group-item"
+            (click)="togglediv()"
+          >
+            รายงานคะแนน
+          </button>
+          <div id="formscore"><form #contestpath="ngForm" (ngSubmit)="downloadTableScore(contestpath)">
+            <div class="form-group">
+              <label for="contestid">เลือกการประกวดแข่งขัน</label>
+              <select
+                required
+                name="contestid"
+                class="form-control"
+                ngModel
+                #contestid="ngModel"
+                (change)="getmatch(contestpath)"
+              >
+                <option
+                  value="{{ item.path }}"
+                  *ngFor="let item of contest; let count = index"
+                  >{{ item.contestname + item.location + item.date }}
+                </option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="matchid">เลือกการแข่ง</label>
+              <select
+                required
+                name="matchid"
+                class="form-control"
+                ngModel
+                #contestid="ngModel"
+              >
+                <option
+                  value="{{ item1.path }}"
+                  *ngFor="let item1 of match; let count = index"
+                  >{{ item1.name + item1.time + item1.type }}
+                </option>
+              </select>
+            </div>
+            <button type="submit">ตกลง</button>
+          </form></div>
+          <!-- <pre>{{contestpath.value | json}}</pre> -->
+        </div>
+          <button type="button" class="list-group-item" (click)="togglediv2()">
+            รายงายทั้งหมดของการแข่งขัน
+          </button>
+          <div id="formcontest"><form #contest2="ngForm" (ngSubmit)="downloadcontest(contest2)">
+            <div class="form-group">
+              <label for="contestdd">เลือกการประกวดแข่งขัน</label>
+              <select
+                required
+                name="contestdd"
+                class="form-control"
+                ngModel
+                #contestid="ngModel"
+              >
+                <option
+                  value="{{ item.path }}"
+                  *ngFor="let item of contest; let count = index"
+                  >{{ item.contestname + item.location + item.date }}
+                </option>
+              </select>
+            </div>
+            <button type="submit">ตกลง</button>
+          </form></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8" id="contentbody">
+    </div>
+  </div>
+  <!-- <div> <button  class="ddd" (click)="downloadTableScore()">Export To PDF</button></div> -->
+  

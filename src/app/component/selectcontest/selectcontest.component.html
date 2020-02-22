@@ -1,0 +1,19 @@
+<h2>{{ pathid }}</h2>
+<div>
+  <div class="col-6">
+    <ul *ngFor="let item of contest; let s = index" (click)="showhide(s)">
+      <a>{{ item.contestname + " " + item.location + " " + item.date }}</a>
+      <div id="{{ s }}" class="sh">
+        <ul *ngFor="let items of item.data; let i = index">
+          <li (click)="onSelect(items)">
+            <!-- <a href=""></a> -->
+            <a>
+              {{ items.name }}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </ul>
+  </div>
+</div>
+<!--  -->

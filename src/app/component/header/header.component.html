@@ -1,0 +1,70 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button
+        type="button"
+        class="navbar-toggle"
+        data-toggle="collapse"
+        data-target="#myNavbar"
+      >
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/home">สมาคมไก่แจ้ จังหวัดลำปาง</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/home">หน้าหลัก</a></li>
+        <li><a href="#">ประกาศ</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+            >รายการแข่งขัน <span class="caret"></span
+          ></a>
+          <ul class="dropdown-menu">
+            <li><a href=""></a></li>
+            <!-- <li><a href="/user">user</a></li> -->
+            <li><a href="/confirmregister">ยืนยันการสมัคร</a></li>
+            <li><a href="/selectcontest">การแข่งขัน</a></li>
+          </ul>
+        </li>
+        
+        <ul class="nav navbar-nav navbar-right" id="Committee" hidden="true">
+          <li><a href="/createcontest">เพิ่มข้อมูลการแข่ง</a></li>
+          <li><a href="/add-score">ให้คะแนนการแข่งขัน</a></li>
+          <li><a href="/report">รายงาน</a></li>
+        </ul>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" id="nav-login">
+        <button
+          type="button"
+          class="btn_login btn-success btn-lg"
+          data-toggle="modal"
+          data-target="#myModal"
+          id="login-btn"
+        >
+          Login
+        </button>
+        <li id="regis-li">
+          <a href="/register"
+            ><span class="glyphicon glyphicon-user"></span> สมัครสมาชิก</a
+          >
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" id="nav-logout" hidden="true">
+        <!-- <button  type="button" class="btn_login btn-success btn-lg" data-toggle="modal" data-target="#myModal" id="login-btn">Login</button> -->
+        <!-- <button type="button" class="glyphicon glyphicon-log-out">Logout</button> -->
+        <li id="regis-li1">
+          <span id="uid" hidden="true"></span>
+          <span id="membername" hidden="true"></span>
+          <a id="userEmail" (click)="onSelect()"></a>
+        </li>
+        <li id="regis-li">
+          <a href="javascript:void(0);" (click)="logout()"
+            ><span class="glyphicon glyphicon-log-out"></span>Logout</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

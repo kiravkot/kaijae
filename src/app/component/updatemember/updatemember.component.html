@@ -1,0 +1,97 @@
+<div class="container">
+    <h2>แก้ไขข้อมูลส่วนตัว</h2>
+    <div class="row">
+      <div class="card" style="width: 75rem;">
+        <form #regisform="ngForm" (ngSubmit)="updateprofile(regisform)">
+          <img [src]="imgSrc" height="250" width="350" />
+          <div class="form-group">
+            <label for="imgprofileRef">เลือกรูปภาพ</label>
+            <input
+              type="file"
+              name="imgprofileRef"
+              accept="image/*"
+              (change)="showpreview($event)"
+              class="form-control"
+              ngModel
+              #imgprofile="ngModel"
+            />
+          </div>
+          <div class="form-group">
+            <label for="fname">ชื่อ</label>
+            <input
+              required
+              type="text"
+              name="fname"
+              id="fname"
+              class="form-control"
+              [(ngModel)]="inputFname"
+              ngModel
+              #fname="ngModel"
+            />
+            <div
+              *ngIf="fname.touched && fname.invalid"
+              class="alert alert-danger"
+            >
+              <p>
+                กรุณากรอกชื่อ
+              </p>
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="lname">นามสกุล</label>
+            <input
+              required
+              type="text"
+              name="lname"
+              class="form-control"
+              [(ngModel)]="inputLname"
+              ngModel
+              #lname="ngModel"
+            />
+            <div
+              *ngIf="lname.touched && lname.invalid"
+              class="alert alert-danger"
+            >
+              <p>
+                กรุณากรอกนามสกุล
+              </p>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="tel">เบอร์โทร</label>
+            <input
+              type="text"
+              name="tel"
+              class="form-control"
+              [(ngModel)]="inputTel"
+              minlength="10"
+              maxlength="10"
+              ngModel
+            />
+          </div>
+          <div class="form-group">
+            <label for="address">ที่อยู่</label>
+            <input type="text" name="address" class="form-control" ngModel [(ngModel)]="inputAddr" />
+          </div>
+          <div class="form-group">
+            <label for="Province">จังหวัด</label>
+            <input type="text" name="Province" class="form-control" ngModel [(ngModel)]="inputProvice" />
+          </div>
+          <div class="form-group">
+            <label for="birth">วันเกิด</label>
+            <input type="date" name="birth" class="form-control" ngModel  [(ngModel)]="inputDate"/>
+          </div>
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="regisform.invalid"
+          >
+            ยืนยัน</button>
+        </form>
+      </div>
+      <!-- <pre>{{ regisform.value | json }}</pre> -->
+    </div>
+  </div>
+  

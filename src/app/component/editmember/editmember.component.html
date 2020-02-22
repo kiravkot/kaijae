@@ -1,0 +1,70 @@
+<div class="col-md-12">
+  <div class="col-md-2">
+    <div
+      class="btn-group-vertical"
+      role="group"
+      aria-label="..."
+      style="width: 100%;"
+    >
+      <div class="list-group">
+        <button
+          type="button"
+          class="list-group-item"
+          onclick="window.location.href='regismatch'"
+        >
+          เข้าร่วมการแข่งขัน
+        </button>
+        <button type="button" class="list-group-item" (click)="onSelectupdate()">
+          แก้ไขข้อมูลส่วนตัว
+        </button>
+        <button
+          type="button"
+          class="list-group-item"
+          onclick="window.location.href='kai'"
+        >
+          เพิ่มไก่
+        </button>
+        <div class="list-group" id="judge">
+          <button type="button" class="list-group-item">
+            ให้คะแนนการแข่งขัน
+          </button>
+          <button
+            type="button"
+            class="list-group-item"
+            onclick="window.location.href='judgetoplayer'"
+          >
+            ลงชื่อเป็นกรรมการ
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="card">
+      <img
+        id="imguserURL"
+        alt="John"
+        style="width:250px;height: 250px; padding-top: 1vh;"
+      />
+      <h2 id="fullname"></h2>
+      <p class="title" id="emailaddress"></p>
+      <p class="title" id="phonetel"></p>
+      <p class="title" id="address"></p>
+      <p class="title" id="birth"></p>
+      
+      <!-- <div style="margin: 24px 0;">
+        <a href="#"><i class="fa fa-dribbble"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        <a href="#"><i class="fa fa-facebook"></i></a>
+      </div> -->
+      <!-- <p><button class="edit">Contact</button></p> -->
+    <div>
+      <p></p>
+      <h2 >ไก่</h2>
+      <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+    </div>
+      
+    </div>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<div class="container">
+  <h2>ลงทะเบียนเข้าร่วมการแข่งขัน</h2>
+
+  <form #regisform="ngForm" (ngSubmit)="submit(regisform)">
+    <div class="form-group">
+      <label for="contestid">เลือกการประกวดแข่งขัน</label>
+      <select
+        required
+        name="contestid"
+        class="form-control"
+        ngModel
+        #contestid="ngModel"
+        (click)="getuid()"
+      >
+        <option
+          value="{{ item.uid }}"
+          *ngFor="let item of contest; let count = index"
+          >{{ item.contestname + item.location + item.date }}
+        </option>
+      </select>
+      <div
+        *ngIf="contestid.touched && contestid.invalid"
+        class="alert alert-danger"
+      >
+        <p>
+          กรุณา เลือกการประกวดแข่งขัน
+        </p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="matchid">เลือกการแข่งขัน</label>
+      <select
+        required
+        name="matchid"
+        class="form-control"
+        ngModel
+        #matchid="ngModel"
+        (click)="qureymatch(regisform)"
+      >
+        <option
+          value="{{ item.id }}"
+          *ngFor="let item of matchList; let count = index"
+          >{{
+            item.name + "  " + changeoption() + " " + item.time
+          }}
+          นาที</option
+        >
+      </select>
+      <div
+        *ngIf="matchid.touched && matchid.invalid"
+        class="alert alert-danger"
+      >
+        <p>
+          กรุณา เลือกประเภทแข่งขัน
+        </p>
+      </div>
+    </div>
+    <div>
+      <select
+        required
+        name="kaiID"
+        class="form-control"
+        ngModel
+        #matchid="ngModel"
+      >
+        <option value="{{ i }}" *ngFor="let item of kailist; let i = index"
+          >{{ item.kainame }}
+        </option>
+      </select>
+    </div>
+    <button
+      class="btn btn-primary"
+      type="submit"
+      [disabled]="regisform.invalid"
+    >
+      Submit</button
+    >&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-danger" type="reset">reset</button>
+  </form>
+  <pre>
+      {{ regisform.value | json }}
+  </pre>
+</div>
