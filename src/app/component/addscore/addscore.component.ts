@@ -187,6 +187,7 @@ export class AddscoreComponent implements OnInit {
   setscore(num: number, score: number) {
     // console.log(this.playerid[num].uid);
     // console.log(score);
+    const current = new Date();
     const str = this.playerid[num].uid.split("/");
     // const increment = firebase.firestore.FieldValue.increment(1);
     const ref = firebase
@@ -197,12 +198,13 @@ export class AddscoreComponent implements OnInit {
       .doc(str[5]);
     // this.nextLibAvailable = true;
     ref.update({ score: score + 1 }).then(() => {
+      ref.set({scorestamp:[current.toTimeString]})
       document
         .getElementById(num.toString())
         .setAttribute("disabled", "disabled");
       setTimeout(() => {
         document.getElementById(num.toString()).removeAttribute("disabled");
-        console.log("gggg");
+        console.log("gggggg");
       }, 2000);
     });
 

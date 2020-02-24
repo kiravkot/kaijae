@@ -43,7 +43,9 @@ export class ConfirmregisComponent implements OnInit {
       .doc(refpath[3])
       .collection(refpath[4])
       .doc(refpath[5])
-      .update({ status: true });
+      .update({ status: true }).then(()=>{
+        
+      });
   }
 
   getplayer(username: NgForm) {

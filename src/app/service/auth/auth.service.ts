@@ -98,7 +98,11 @@ export class AuthService {
     this.afAuth.auth.signInWithEmailAndPassword(
       formvalue.value.email,
       formvalue.value.password
-    )
+    ).catch(()=>{
+      alert("Username หรือ Password ไม่ถูกต้อง")
+    }).finally(()=>{
+      formvalue.resetForm()
+    })
   }
 
   doLogout() {

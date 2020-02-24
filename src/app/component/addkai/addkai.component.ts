@@ -107,6 +107,7 @@ export class AddkaiComponent implements OnInit {
               memref.add(formvalue.value);
               alert("ลงทะเบียนสำเร็จ");
               console.log("complete");
+              formvalue.resetForm()
             });
           })
         )
