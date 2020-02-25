@@ -133,9 +133,14 @@ export class AuthService {
 
             if (doc.data().permission == "Member"){
               document.getElementById("judge").hidden = true
+              document.getElementById("admin").hidden = true
             }
-            else{
+            else if(doc.data().permission == "judge"){
               document.getElementById("judge").hidden = false
+              document.getElementById("admin").hidden = true
+            }else{
+              document.getElementById("judge").hidden = false
+              document.getElementById("admin").hidden = false
             }
           }
           })

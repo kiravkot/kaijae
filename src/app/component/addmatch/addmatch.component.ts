@@ -180,7 +180,7 @@ export class AddmatchComponent implements OnInit {
     this.po.where("id", "==", this.form.value.id).onSnapshot(querySnapshot => {
       if (querySnapshot.empty) {
         this.item.id = this.form.value.id;
-        this.db.firestore.collection("match").add(this.item);
+        this.db.firestore.collection("match").add(this.item).finally(()=>{});
         this.getuid(this.form.value.id);
         this.currentLesson = "2";
         console.log("เพิ่มข้อมูลสำเร็จ");

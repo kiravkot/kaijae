@@ -33,7 +33,7 @@ export class ChangepermissionComponent implements OnInit {
           alert("Email นี้ไม่มีอยู่ในระบบ");
         } else {
           check.forEach(doc => {
-            doc.ref.update("permission", "judge");
+            doc.ref.update("permission", "judge").finally(()=>{alert(form.value.email+" เปลี่ยนเป็นกรรมการเรียบร้อยแล้ว")});
           });
         }
       });

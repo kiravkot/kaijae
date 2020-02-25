@@ -121,9 +121,9 @@ export class EditmemberComponent implements OnInit {
           .getElementById("imguserURL")
           .setAttribute("src", this.userprofile.imgprofileRef);
         document.getElementById("fullname").innerHTML =
-          this.userprofile.fname + "  " + this.userprofile.lname;
+          "ชื่อ "+ this.userprofile.fname + "  " + this.userprofile.lname;
           document.getElementById("emailaddress").innerHTML =
-          this.userprofile.email
+          "อีเมล "+this.userprofile.email
           document.getElementById("address").innerHTML =
           "ที่อยู่  "+this.userprofile.address + "  " + this.userprofile.Province
           document.getElementById("birth").innerHTML =

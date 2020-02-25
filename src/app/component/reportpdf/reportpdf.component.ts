@@ -78,12 +78,18 @@ export class ReportpdfComponent {
     // document.getElementById("contentbody").appendChild(iframe)
     var splitted = path.value.matchid.split("/")
     var matchdataread
+    var contestdata1
+    var getreportcontest = this.db.collection(splitted[0]).doc(splitted[1])
+    getreportcontest.snapshotChanges().subscribe(contest=>{
+      contestdata1 = contest.payload.data()
+      console.log(contest.payload.data())
+    })
     var getscoredb = this.db.collection(splitted[0]).doc(splitted[1]).collection(splitted[2]).doc(splitted[3]).collection("player").snapshotChanges()
     var rowdata=[]
     var getdata = this.db.collection(splitted[0]).doc(splitted[1]).collection(splitted[2]).doc(splitted[3]).snapshotChanges().subscribe(matchdata=>{
       console.log(matchdataread = matchdata.payload.data())
     })
-    var header=[{dd:'อันดับ',id:'หมายเลข',name:'ชื่อ-สกุล',score:'คะแนน'}]
+    var header=[{dd:'อันดับ',id:'หมายเลข',name:'ชื่อ-สกุลเจ้าของไก่',score:'คะแนน'}]
     getscoredb.subscribe(a=>{
       a.map(ds=>{
         let ss = {dd:ds.payload.newIndex+1,id:ds.payload.doc.data().number,name:ds.payload.doc.data().name,score:ds.payload.doc.data().score}
@@ -93,9 +99,11 @@ export class ReportpdfComponent {
       this.setfont()
       this.doc.setFontSize(30);
       this.doc.addImage(this.imgData,'PNG',15,15,50,50)
-      var text = (matchdataread.name+" " +matchdataread.time+" นาที "+matchdataread.type)
-      this.doc.text("ผลคะแนน",this.centertext("ผลคะแนน"),50)
-      this.doc.text(text,this.centertext(text), 80)
+      this.doc.text("ชื่อการประกวด "+contestdata1.contestname,this.centertext("ชื่อการประกวด "+contestdata1.contestname), 50)
+      this.doc.text("วันที่ " +contestdata1.date,this.centertext("วันที่ " +contestdata1.date),80)
+      var text = ("ประเภท " + matchdataread.name+" " +matchdataread.time+" นาที "+matchdataread.type)
+      // this.doc.text("ผลคะแนน",this.centertext("ผลคะแนน"),50)
+      this.doc.text(text,this.centertext(text), 120)
       // this.doc.text("ผลคะแนน",this.centertext("ผลคะแนน"),80)
       // this.doc.text(this.centertext(mdb.payload.doc.data().name+mdb.payload.doc.data().time+"นาที"+mdb.payload.doc.data().type),110,mdb.payload.doc.data().name+mdb.payload.doc.data().time+"นาที"+mdb.payload.doc.data().type)
 
@@ -170,9 +178,10 @@ export class ReportpdfComponent {
           this.setfont()
           this.doc.setFontSize(30);
           this.doc.addImage(this.imgData,'PNG',15,15,50,50)
-          this.doc.text(contestdata.contestname,this.centertext(contestdata.contestname), 50)
-          this.doc.text(contestdata.date,this.centertext(contestdata.date),80)
-          this.doc.text(this.centertext(mdb.payload.doc.data().name+mdb.payload.doc.data().time+"นาที"+mdb.payload.doc.data().type),110,mdb.payload.doc.data().name+mdb.payload.doc.data().time+"นาที"+mdb.payload.doc.data().type)
+          this.doc.text("ชื่อการประกวด "+contestdata.contestname,this.centertext("ชื่อการประกวด "+contestdata.contestname), 50)
+          this.doc.text("วันที่ " +contestdata.date,this.centertext("วันที่ " +contestdata.date),80)
+          var mtpyestr = "ประเภท "+mdb.payload.doc.data().name+mdb.payload.doc.data().time+"นาที"+mdb.payload.doc.data().type
+          this.doc.text(this.centertext(mtpyestr),110,mtpyestr)
           this.doc.autoTable({
               startY: 140,
               head :header,
